@@ -1,3 +1,13 @@
+/* *
+* CSE240 HW 7: Main file for adding to room with a class, file io, and displaying
+*
+* Completion time : 7
+*
+* @author Tyler Crimando
+* @version 6/12/25
+* @ide G++
+*
+*/
 
 // CSE240 
 // Be sure to add the standard header above.

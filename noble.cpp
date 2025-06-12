@@ -1,3 +1,13 @@
+/* *
+* CSE240 HW 7: noble cpp class file. Creating a display function for the class
+*
+* Completion time : 7
+*
+* @author Tyler Crimando
+* @version 6/12/25
+* @ide G++
+*
+*/
 
 // Q2b: Define displayRoom() for Noble class (5 points)
 // Define the function displayRoom() that you declared within the Noble class in the header file

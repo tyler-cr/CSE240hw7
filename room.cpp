@@ -1,4 +1,3 @@
-
 #include "room.h"
 
 // definitions of Room member functions

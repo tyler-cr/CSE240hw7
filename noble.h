@@ -1,4 +1,13 @@
-
+/* *
+* CSE240 HW 7: Noble header file. Dealing with inheritance and re-declaration
+*
+* Completion time : 7
+*
+* @author Tyler Crimando
+* @version 6/12/25
+* @ide G++
+*
+*/
 
 #ifndef _NOBLE_H_
 #define _NOBLE_H_

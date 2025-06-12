@@ -1,3 +1,13 @@
+/* *
+* CSE240 HW 7: Hayden header file. Creating, declaring, and re-declaring
+*
+* Completion time : 7
+*
+* @author Tyler Crimando
+* @version 6/12/25
+* @ide G++
+*
+*/
 
 #ifndef _HAYDEN_H
 #define _HAYDEN_H

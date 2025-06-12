@@ -1,3 +1,14 @@
+/* *
+* CSE240 HW 7: room header file. Friend functions
+*
+* Completion time : 7
+*
+* @author Tyler Crimando
+* @version 6/12/25
+* @ide G++
+*
+*/
+
 #ifndef _ROOM_H_
 #define _ROOM_H_
 
