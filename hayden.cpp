@@ -9,6 +9,7 @@
 *
 */
 
+
 // Q2a: Define displayRoom() for Hayden class (5 points)
 // Define the function displayRoom() that you declared within the Hayden class in the header file
 // See expected output in question file.
