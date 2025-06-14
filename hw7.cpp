@@ -301,29 +301,30 @@ void load(string fileName)
 	ifstream fileHandler;
 	fileHandler.open(fileName, ios::in);
 
+
+	string temp;
 	string roomName;
 	int roomNum;  
 	int typeInt;
 	libraryType roomType;
 
-	int fileSize = listSize;
+	int fileSize;
 
 
 	if (fileHandler.is_open()){
-		fileHandler >> listSize;
-		cout << listSize << endl;
-		fileHandler.ignore();
+		getline(fileHandler, temp);
+		fileSize = stoi(temp);
 
 		for (int i = 0; i < fileSize; i++){
-			cout << i << endl;
-			getline(fileHandler, roomName);
-			cout << "ROOM NAME:    "<< roomName << endl;
-			fileHandler >> roomNum;
-			cout << "ROOM AMNT:    "<< roomNum  << endl;
-			fileHandler >> typeInt;
-			fileHandler.ignore();
+			getline(fileHandler, temp);
+			roomName = temp;
+			
+			getline(fileHandler, temp);
+			roomNum = stoi(temp);
+			
+			getline(fileHandler, temp);
+			typeInt = stoi(temp);
 			roomType = (libraryType)typeInt;
-			cout << "LIBRARY TYPE: "<< roomType << endl;
 
 			addRoom(roomName, roomNum, roomType);
 

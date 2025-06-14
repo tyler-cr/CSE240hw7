@@ -23,7 +23,7 @@ libraryType Room::getLibraryType()
 	return lib;
 }
 
-//helper function for getting string representation of enum
+//helper function for getting string representation of enum. Used in display
 string Room::getLibraryStr(libraryType type){
 	if (type == 0) return "Hayden";
 	else if (type == 1) return "Noble";
