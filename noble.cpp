@@ -24,5 +24,7 @@
 
 void Noble::displayRoom()
 {
-	// notice that no function call is needed becasue we know this is Noble class function
+	cout << "Room name: " << getName() << endl;
+	cout << "Number of rooms: " << getNo() << endl;
+	cout << "Library: " << getLibraryStr(getLibraryType()) << endl;
 }

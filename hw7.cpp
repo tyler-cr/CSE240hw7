@@ -52,7 +52,13 @@ void displayList();							// 4 points
 void save(string fileName);					// 7 points
 void load(string fileName);					// 7 points
 
+void changeLibraryType(Room &room, libraryType newLibrary){
+	room.lib = newLibrary;
+}
+
 Container* list = NULL;				// global list
+
+int listSize = 0;					// keep track of list size
 
 int main()
 {
@@ -143,7 +149,8 @@ void executeAction(char c)
 			cin >> type_input;
 			cin.ignore();
 			type = (libraryType)type_input;
-			// Q3c Call changeLibraryType() here   (1 point)
+			
+			changeLibraryType(*roomResult, type);
 			// 'roomResult' contains the room whose Library Type is to be changed.
 			// Call the function with appropriate arguments.
 
@@ -195,7 +202,28 @@ Room* searchRoom(string name_input)
 
 void addRoom(string name_input, int no_input, libraryType type) 
 {
-	Container* tempList = list;				// work on a copy of 'list'
+	Container *tempList = list;
+
+	Room *roomToAdd;
+	if (type == 0) roomToAdd = new Hayden(name_input, no_input, type);
+	else roomToAdd = new Noble(name_input, no_input, type);
+
+	if (list == NULL) {
+		list = new Container();
+		list->room = roomToAdd;
+	}
+	else{
+		Container *tempList = list;
+		while (tempList->next){
+			tempList = tempList->next;
+		}
+		tempList->next = new Container();
+		tempList->next->room = roomToAdd;
+	}
+
+	listSize++;
+
+
 	
 }
 
@@ -207,6 +235,12 @@ void addRoom(string name_input, int no_input, libraryType type)
 void displayList()
 {
 	Container *tempList = list;			// work on a copy of 'list'
+
+	while(tempList){
+		cout << endl;
+		tempList->room->displayRoom();
+		tempList = tempList->next;
+	}
 }
 
 // Q6: save  (7 points)
@@ -228,6 +262,28 @@ void displayList()
 
 void save(string fileName)
 {
+	ofstream fileHandler;
+	fileHandler.open(fileName, ios::out);
+
+	Container *tempList = list;
+
+	if (fileHandler.is_open()){
+		fileHandler << listSize << endl;
+
+		while (tempList){
+			fileHandler << tempList->room->getName() << endl;
+			fileHandler << tempList->room->getNo() << endl;
+			fileHandler << tempList->room->getLibraryType() << endl;
+
+			tempList = tempList->next;
+
+		}
+		fileHandler.close();
+
+		//WIP
+	}
+
+	else cout << "ERROR: Could not save to file" << endl;
 	
 	
 }
@@ -242,6 +298,40 @@ void save(string fileName)
 
 void load(string fileName)
 {
-	
+	ifstream fileHandler;
+	fileHandler.open(fileName, ios::in);
+
+	string roomName;
+	int roomNum;  
+	int typeInt;
+	libraryType roomType;
+
+	int fileSize = listSize;
+
+
+	if (fileHandler.is_open()){
+		fileHandler >> listSize;
+		cout << listSize << endl;
+		fileHandler.ignore();
+
+		for (int i = 0; i < fileSize; i++){
+			cout << i << endl;
+			getline(fileHandler, roomName);
+			cout << "ROOM NAME:    "<< roomName << endl;
+			fileHandler >> roomNum;
+			cout << "ROOM AMNT:    "<< roomNum  << endl;
+			fileHandler >> typeInt;
+			fileHandler.ignore();
+			roomType = (libraryType)typeInt;
+			cout << "LIBRARY TYPE: "<< roomType << endl;
+
+			addRoom(roomName, roomNum, roomType);
+
+		}
+
+		fileHandler.close();
+	}
+
+	else cout << "ERROR Could not load from file" << endl;
 	
 }

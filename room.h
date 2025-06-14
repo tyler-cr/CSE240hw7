@@ -38,8 +38,10 @@ public:
 	// Declare a friend function named changeLibraryType() which has 2 parameters and no return value.
 	// The first parameter is a pointer to Room class, and the second is an integer which is the new Library type.
 	// You need to define this function in hw7.cpp and call this function in case 'c' of executeAction() in hw7.cpp file
+	friend void changeLibraryType(Room &curRoom, libraryType newLibrary);
 
-
+	//helper function to get string representation of library
+	string getLibraryStr(libraryType type);
 	
 };
 
